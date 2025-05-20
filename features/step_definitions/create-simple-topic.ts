@@ -33,7 +33,7 @@ Given(/^a first account with more than (\d+) hbars$/, async function (expectedBa
   assert.ok(balance.hbars.toBigNumber().toNumber() > expectedBalance)
 });
 
-When(/^A topic is created with the memo "([^"]*)" with the first account as the submit key$/, async function (memo: string) {
+When(/^A topic is created with the memo "([^"]*)" with the first account as the submit key$/,{timeout: 60 * 1000}, async function (memo: string) {
   client.setOperator(this.account, this.privKey);
   const topicTxn = await new TopicCreateTransaction({
     submitKey: this.privKey,
