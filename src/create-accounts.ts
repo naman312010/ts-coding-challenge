@@ -11,7 +11,7 @@ async function main() {
 
   for (let i = 0; i < 5; i++) {
     const newPrivateKey = PrivateKey.generate()
-    const receipt = await (await new AccountCreateTransaction().setInitialBalance(100).setKey(newPrivateKey)
+    const receipt = await (await new AccountCreateTransaction().setInitialBalance(100).setKeyWithoutAlias(newPrivateKey)
         .execute(client)).getReceipt(client)
     console.log(`{id: "${receipt.accountId}", privateKey: "${newPrivateKey}"},`)
   }
